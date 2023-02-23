@@ -26,7 +26,7 @@
   color: #ffffff;
 }
 input {
-  font-size: 40px;
+  font-size: 36px;
   line-height: 1;
   width: 100%;
   padding: 5px;
@@ -51,4 +51,5 @@ input {
 .btn-calc:hover {
   transform: scale(0.98);
   transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
 }
