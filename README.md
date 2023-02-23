@@ -1,1 +1,1 @@
-This is simple calculator 
+This is simple calculator https://irashtynda.github.io/calculator/
