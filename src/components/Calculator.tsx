@@ -1,39 +1,50 @@
-import { FC } from "react";
+import { FC, MouseEvent, useState } from "react";
 import Button from "./Button";
-import ButtonWrapper from "./ButtonWrapper";
 
-const Calculator: FC = (): JSX.Element => {
+interface CalculatorProps {}
+
+const Calculator: FC<CalculatorProps> = (): JSX.Element => {
+  const [result, setResult] = useState<string>("");
+
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+    setResult(result.concat(e.currentTarget.name));
+  };
+
+  const calculate = () => {
+    try {
+      setResult(eval(result).toString());
+    } catch (error) {
+      setResult("Error");
+    }
+  };
+
+  const clear = () => {
+    setResult("");
+  };
+
   return (
-    <div className="border padding-10">
-      <div className="calculator-screen border">
-        <span>0</span>
-        <span className="result">0</span>
+    <div className="calculator">
+      <form>
+        <input type="text" value={result} />
+      </form>
+      <div className="btn-wrapper">
+        <Button name="1" onClick={handleClick} />
+        <Button name="2" onClick={handleClick} />
+        <Button name="3" onClick={handleClick} />
+        <Button name="+" onClick={handleClick} />
+        <Button name="4" onClick={handleClick} />
+        <Button name="5" onClick={handleClick} />
+        <Button name="6" onClick={handleClick} />
+        <Button name="-" onClick={handleClick} />
+        <Button name="7" onClick={handleClick} />
+        <Button name="8" onClick={handleClick} />
+        <Button name="9" onClick={handleClick} />
+        <Button name="*" onClick={handleClick} />
+        <Button name="C" onClick={clear} />
+        <Button name="0" onClick={handleClick} />
+        <Button name="/" onClick={handleClick} />
+        <Button name="=" onClick={calculate} />
       </div>
-      <ButtonWrapper>
-        <Button value="1" />
-        <Button value="2" />
-        <Button value="3" />
-      </ButtonWrapper>
-      <ButtonWrapper>
-        <Button value="4" />
-        <Button value="5" />
-        <Button value="6" />
-      </ButtonWrapper>
-      <ButtonWrapper>
-        <Button value="7" />
-        <Button value="8" />
-        <Button value="9" />
-      </ButtonWrapper>
-      <ButtonWrapper>
-        <Button value="0" />
-        <Button value="+" />
-        <Button value="-" />
-      </ButtonWrapper>
-      <ButtonWrapper>
-        <Button value="*" />
-        <Button value="/" />
-        <Button value="=" />
-      </ButtonWrapper>
     </div>
   );
 };

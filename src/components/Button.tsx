@@ -1,12 +1,12 @@
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 
 interface Props {
-    value: string;
-    onClick?: () => void;
+  name: string;
+    onClick: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button: FC<Props> = ({value, onClick}): JSX.Element => {
-  return <button className="calc-btn border" onClick={onClick}>{value}</button>
+const Button: FC<Props> = ({name, onClick}): JSX.Element => {
+  return <button className="btn-calc" name={name} onClick={onClick}>{name}</button>
 };
 
 export default Button;
